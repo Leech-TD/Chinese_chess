@@ -1,0 +1,160 @@
+{include file="comm/header"}
+<!-- 正文开始 -->
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body table-tool-mini full-table">
+            <div class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <input class="layui-input" name="key" placeholder="请输入关键字" autocomplete="off">
+                    </div>
+                    <div class="layui-inline">
+                        <select name="type" id="type">
+                            <option value="">请选择角色</option>
+                            {volist name="list" id="vo"}
+                            <option value="{$vo.type_id}">{$vo.type_name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                    <div class="layui-inline" style="padding-right: 110px;">
+                        <button class="layui-btn icon-btn layui-btn-sm" lay-filter="searchUser" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                        <button class="layui-btn icon-btn layui-btn-sm" lay-filter="searchUser" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>发布商品
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <table id="tableUser" lay-filter="tableUser"></table>
+        </div>
+    </div>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="tableBarUser">
+    <a class="layui-btn layui-btn-primary layui-btn-danger" lay-event="edit">加入购物车</a>
+</script>
+{include file="comm/footer"}
+<script>
+    layui.use(['layer', 'form', 'table', 'util', 'admin'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        // 渲染表格
+        var insTb = table.render({
+            elem: '#tableUser',
+            url: '{:url("index")}',
+            page: true,
+            even: true,
+            limits: [10, 20, 50, 100],
+            limit: 10,
+            cols: [[
+                {type: 'checkbox'},
+                {type: 'numbers'},
+                {align: 'center', field: 'goods_name', title: '商品名称'},
+                {align: 'center', field: 'type_name', title: '商品分类'},
+                {align: 'center', field: 'price', title: '价格'},
+                {
+                    align: 'center', field: 'status', sort: true, title: '状态',
+                    templet: function (d) {
+                        if (d.status === 1) return '<span class="text-success">在售中</span>';
+                        else if (d.status === 2) return '<span class="text-danger">已卖出</span>';
+                    }
+                },
+                {
+                    align: 'center',field: 'modify', sort: true,
+                    title: '上架时间',
+                    templet: "<div>{{layui.util.toDateString(d.create_time*1000, 'yyyy-MM-dd HH:mm:ss')}}</div>"
+                },
+
+                {align: 'center', toolbar: '#tableBarUser', title: '操作', minWidth: 200}
+            ]]
+        });
+
+        // 添加
+        $('#addgoods').click(function () {
+            doEdit();
+        });
+
+        // 删除
+        $('#delgoods').click(function () {
+            var checkRows = table.checkStatus('tableUser');
+            if (checkRows.data.length === 0) {
+                layer.msg('请选择要删除的数据', {icon: 2});
+                return;
+            }
+            var ids = checkRows.data.map(function (d) {
+                return d.goods_id;
+            });
+            console.log(ids);
+            doDel(ids);
+        });
+
+
+
+        // 搜索
+        form.on('submit(searchUser)', function (data) {
+            insTb.reload({where: data.field}, 'data');
+        });
+
+        // 工具条点击事件
+        table.on('tool(tableUser)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            if (layEvent === 'edit') { // 修改
+                doEdit(data);
+            } else if (layEvent === 'del') { // 删除
+                doDel(data.goods_id, data.goods_name);
+            }
+        });
+
+        // 删除
+        function doDel(goods_id,goods_name) {
+            layer.confirm('确定要删除'+goods_name+'商品吗？', {
+                skin: 'layui-layer-admin',
+                shade: .1,
+                icon:3
+            }, function (index) {
+                layer.close(index);
+                layer.load(2);
+                $.post("{:url('goodsDel')}", {
+                    goods_id: goods_id
+                }, function (res) {
+                    layer.closeAll('loading');
+                    if (res.code === 1) {
+                        layer.msg(res.msg, {icon: 1});
+                        insTb.reload({}, 'data');
+                    } else {
+                        layer.msg(res.msg, {icon: 2});
+                    }
+                }, 'json');
+            });
+        }
+        function doEdit(data) {
+            //添加id的目的为防止用户编辑时显示用户密码
+            var id = 0;
+            if (data) id = data.goods_id;
+
+            var layIndex = admin.open({
+                title: (data ? '修改' : '添加') + '商品',
+                url: "{:url('goodsForm')}?goods_id=" + id,
+                data: {data: data},     // 传递数据到表单页面
+                end: function () {
+                    if (admin.getLayerData(layIndex, 'formOk')) {  // 判断表单操作成功标识
+                        insTb.reload();  // 成功刷新表格
+                    }
+                },
+                success: function (layero, dIndex) {
+                    // 弹窗超出范围不出现滚动条
+                    $(layero).children('.layui-layer-content').css('overflow', 'visible');
+                }
+            });
+        }
+    });
+</script>

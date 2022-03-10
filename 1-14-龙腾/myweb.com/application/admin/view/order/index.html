@@ -1,0 +1,116 @@
+{include file="comm/header"}
+<!-- 正文开始 -->
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body table-tool-mini full-table">
+            <div class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <button id="addBook" class="layui-btn icon-btn layui-btn-sm"><i class="layui-icon layui-icon-add-1"></i>添加</button>
+                    </div>
+                </div>
+            </div>
+            <table id="table" lay-filter="table"></table>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barBook">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+{include file="comm/footer"}
+<script>
+    layui.use(['layer', 'form', 'table', 'util', 'admin'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var admin = layui.admin;
+
+        // 渲染表格
+        var insTb = table.render({
+            elem: '#table',
+            url: '{:url("index")}',
+            even: true,
+            page: true,//开启分页
+            cols: [[
+                {type: 'checkbox'}
+                , {type: 'numbers', title: '序号'}
+                , {field: 'order_id', title: '订单编号', align: 'center'}
+                , {field: 'uid0', title: '买家账户', align: 'center'}
+                , {field: 'goods_name', title: '商品名称', align: 'center'}
+                , {field: 'user_id', title: '卖家账户', align: 'center'}
+
+                , {field: 'remark', title: '订单备注', align: 'center'}
+
+                , {field: 'type_name', title: '订单状态', align: 'center'},
+                {
+                    align: 'center',field: 'modify', sort: true,
+                    title: '下单时间',
+                    templet: "<div>{{layui.util.toDateString(d.create_time*1000, 'yyyy-MM-dd HH:mm:ss')}}</div>"
+                },
+                , {title: '操作', align: 'center', toolbar: '#barBook'}
+            ]]
+        });
+
+        /* 表格工具条点击事件 */
+        table.on('tool(table)', function (obj) {
+            if (obj.event === 'edit') { // 修改
+                doEdit(obj.data);
+            } else if (obj.event === 'del') { // 删除
+                doDel(obj.data.order_id);
+            }
+        });
+
+        // 添加
+        $('#addBook').click(function () {
+            doEdit();
+        });
+
+        function doEdit(data) {
+            //添加id的目的为防止用户编辑时显示用户密码
+            var id = 0;
+            if (data) id = data.order_id;
+
+            var layIndex = admin.open({
+                title: (data ? '修改' : '添加') + '订单',
+                url: "{:url('bookForm')}?order_id=" + id,
+                data: {data: data},     // 传递数据到表单页面
+                end: function () {
+                    if (admin.getLayerData(layIndex, 'formOk')) {  // 判断表单操作成功标识
+                        insTb.reload();  // 成功刷新表格
+                    }
+                },
+                success: function (layero, dIndex) {
+                    // 弹窗超出范围不出现滚动条
+                    $(layero).children('.layui-layer-content').css('overflow', 'visible');
+                }
+            });
+        }
+
+        /* 删除 */
+        function doDel(id) {
+            layer.confirm('确定要删除订单编号：“' + id + '的订单”吗？', {
+                skin: 'layui-layer-admin',
+                shade: .1,
+                icon:3
+            }, function (index) {
+                layer.close(index);
+                layer.load(2);  //加载操作提示
+                $.post("{:url('orderDel')}", {
+                    order_id: id
+                }, function (res) {
+                    layer.closeAll('loading');
+                    if (res.code === 1) {
+                        layer.msg(res.msg, {icon: 1});
+                        insTb.reload();
+                    } else {
+                        layer.msg(res.msg, {icon: 2});
+                    }
+                }, 'json');
+            });
+        }
+
+    });
+</script>
