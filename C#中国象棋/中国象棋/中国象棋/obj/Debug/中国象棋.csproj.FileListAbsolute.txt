@@ -1,0 +1,52 @@
+C:\Users\Dong\Desktop\中国象棋\中国象棋\bin\Debug\中国象棋.exe
+C:\Users\Dong\Desktop\中国象棋\中国象棋\bin\Debug\中国象棋.pdb
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\中国象棋.Form1.resources
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\中国象棋.Properties.Resources.resources
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.GenerateResource.Cache
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\中国象棋.exe
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\中国象棋.pdb
+C:\Users\Dong\Desktop\中国象棋\中国象棋\obj\Debug\中国象棋.AboutUs.resources
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\中国象棋.exe
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\中国象棋.pdb
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\bin\Debug\中国象棋.exe
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\bin\Debug\中国象棋.pdb
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\ResolveAssemblyReference.cache
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\中国象棋.AboutUs.resources
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\中国象棋.Form1.resources
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\中国象棋.Properties.Resources.resources
+E:\北大青鸟\项目开发\Visual Studio2008\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.GenerateResource.Cache
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.exe
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.pdb
+E:\象棋\C#中国象棋\中国象棋\中国象棋\bin\Debug\中国象棋.exe
+E:\象棋\C#中国象棋\中国象棋\中国象棋\bin\Debug\中国象棋.pdb
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.csprojResolveAssemblyReference.cache
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.AboutUs.resources
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.Form1.resources
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.Properties.Resources.resources
+E:\象棋\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.GenerateResource.Cache
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.exe
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.pdb
+D:\桌面\C#中国象棋\中国象棋\中国象棋\bin\Debug\中国象棋.exe
+D:\桌面\C#中国象棋\中国象棋\中国象棋\bin\Debug\中国象棋.pdb
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.csprojResolveAssemblyReference.cache
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.AboutUs.resources
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.Form1.resources
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.Properties.Resources.resources
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.GenerateResource.Cache
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.exe
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.pdb
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\bin\Debug\中国象棋.exe
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\bin\Debug\中国象棋.pdb
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.csprojResolveAssemblyReference.cache
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.Form1.resources
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.Properties.Resources.resources
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.GenerateResource.Cache
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\Interop.WMPLib.dll
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\AxInterop.WMPLib.dll
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.ResolveComReference.cache
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\bin\Debug\Interop.WMPLib.dll
+D:\桌面\C#中国象棋1.0\中国象棋\中国象棋\bin\Debug\AxInterop.WMPLib.dll
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\Interop.WMPLib.dll
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\AxInterop.WMPLib.dll
+D:\桌面\C#中国象棋\中国象棋\中国象棋\obj\Debug\中国象棋.csproj.ResolveComReference.cache
